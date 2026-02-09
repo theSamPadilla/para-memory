@@ -1,30 +1,34 @@
 # PARA Memory
 
-A skill for AI agents that implements [Tiago Forte's PARA method](https://fortelabs.com/blog/para/) for knowledge management, combined with a daily memory log system.
+A skill that gives AI agents a structured way to organize workspace knowledge using [Tiago Forte's PARA method](https://fortelabs.com/blog/para/), extended with daily memory logs and long-term memory.
 
-## What is PARA?
+## Install
 
-PARA is a simple organizational system with four categories:
+Send this to your agent:
 
-- **Projects** — Active efforts with a goal and end date
-- **Areas** — Ongoing responsibilities with no end date  
-- **Resources** — Topics of interest and reference material
-- **Archives** — Inactive items from the above
+```
+Install the PARA memory skill from https://github.com/theSamPadilla/para-memory. Clone the repo, copy SKILL.md and the scripts/ folder into my skills directory, then run the init script to set up my workspace.
+```
 
-This skill adds a **Memory** layer for AI agents—daily logs plus a curated long-term memory file.
+## How It Works
 
-## What This Skill Does
+The skill teaches agents to sort information into four buckets plus a memory layer:
 
-Helps AI agents:
-- Set up a consistent workspace structure
-- Know where to file new information
-- Maintain daily logs and long-term memory
-- Lifecycle projects from active → archived
-- Keep a quick-reference index of all content
+| Folder | What goes here | Example |
+|---|---|---|
+| `projects/` | Active work with a goal and end date | `migrate-to-v2.md` |
+| `areas/` | Ongoing responsibilities, no end date | `infrastructure.md` |
+| `resources/` | Reference material and topics of interest | `postgres-tuning.md` |
+| `archives/` | Anything completed or no longer active | `old-auth-system.md` |
+| `memory/` | Daily logs (`YYYY-MM-DD.md`) | `2025-01-15.md` |
+
+Two root files tie it together:
+- **`MEMORY.md`** — Curated long-term insights distilled from daily logs
+- **`PARA.md`** — Quick-reference index of everything in the workspace
 
 ## Installation
 
-### Option 1: Copy to your skills directory
+### Option 1: Copy into your skills directory
 
 ```bash
 git clone https://github.com/theSamPadilla/para-memory.git
@@ -38,40 +42,31 @@ Point your agent to this repo's `SKILL.md` as a skill source.
 
 ## Usage
 
-### Initialize a workspace
+### 1. Initialize a workspace
 
 ```bash
 bash scripts/para-init.sh /path/to/workspace
 ```
 
-This creates the folder structure:
-```
-workspace/
-├── projects/
-├── areas/
-├── resources/
-├── archives/
-├── memory/
-├── MEMORY.md
-└── PARA.md
-```
+This creates the full folder structure with template files. The script is idempotent — safe to run multiple times on the same directory.
 
-### For agents
+### 2. Let the agent use the skill
 
-Reference `SKILL.md` for:
-- Decision tree on where to file content
-- Templates for project and area files
-- Memory maintenance workflows
-- Lifecycle management (active → archived)
+`SKILL.md` contains everything an agent needs:
+- **Decision tree** — "Where does this file go?" logic
+- **Templates** — Starter markdown for projects, areas, and resources
+- **Memory workflow** — How to write daily logs and curate `MEMORY.md`
+- **Lifecycle rules** — How to move projects through active → archived, extract learnings, and update the index
+
+No configuration needed. The agent reads `SKILL.md` and follows the instructions.
 
 ## Compatibility
 
-Works with any agent that supports `SKILL.md` files:
-- [OpenClaw](https://github.com/anthropics/openclaw)
+Works with any agent framework that supports skill files:
 - Claude Code
-- OpenAI Codex
-- Any SKILL.md-compatible agent framework
+- [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)
+- Any `SKILL.md`-compatible agent
 
 ## License
 
-MIT
+[WTFPL](LICENSE)
