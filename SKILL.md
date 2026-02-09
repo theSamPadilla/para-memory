@@ -110,7 +110,7 @@ Create in `projects/` with the project template.
 3. Update `PARA.md` index
 
 ### Periodic Review
-During heartbeats or maintenance:
+During heartbeats (for openclaw bots) or maintenance:
 - Check project statuses
 - Reorganize misplaced files
 - Archive stale projects

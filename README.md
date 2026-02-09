@@ -2,7 +2,7 @@
 
 A skill that gives AI agents a structured way to organize workspace knowledge using [Tiago Forte's PARA method](https://fortelabs.com/blog/para/), extended with daily memory logs and long-term memory.
 
-## Install
+## Agent Install
 
 Send this to your agent:
 
@@ -26,7 +26,7 @@ Two root files tie it together:
 - **`MEMORY.md`** — Curated long-term insights distilled from daily logs
 - **`PARA.md`** — Quick-reference index of everything in the workspace
 
-## Installation
+## Manual Installation
 
 ### Option 1: Copy into your skills directory
 
@@ -59,13 +59,6 @@ This creates the full folder structure with template files. The script is idempo
 - **Lifecycle rules** — How to move projects through active → archived, extract learnings, and update the index
 
 No configuration needed. The agent reads `SKILL.md` and follows the instructions.
-
-## Compatibility
-
-Works with any agent framework that supports skill files:
-- Claude Code
-- [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)
-- Any `SKILL.md`-compatible agent
 
 ## License
 
